@@ -33,6 +33,19 @@
         "type": "github"
       }
     },
+    "linux-resources": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1793723557,
+        "narHash": "sha256-iARR/43CHO/X1ISgblD987n2QeLrZCIAU7cTcAD0UKQ=",
+        "type": "tarball",
+        "url": "https://github.com/Yon-Luc/Roxysu/releases/download/v0.1.23/Roxysu-0.1.23-linux-x64-resources.tar.gz"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/Yon-Luc/Roxysu/releases/download/v0.1.23/Roxysu-0.1.23-linux-x64-resources.tar.gz"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1792773339,
@@ -85,7 +98,29 @@
         "flake-parts": "flake-parts",
         "import-tree": "import-tree",
         "nixpkgs": "nixpkgs",
+        "roxysu": "roxysu",
         "wrapper-modules": "wrapper-modules"
+      }
+    },
+    "roxysu": {
+      "inputs": {
+        "linux-resources": "linux-resources",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793723688,
+        "narHash": "sha256-L8c14oTdnNirDG6W7pm3hrjB8+j4ztt+vegebbRZHuA=",
+        "owner": "Yon-Luc",
+        "repo": "Roxysu",
+        "rev": "bc3eb6be1eba43cd6c146e6da42924bc1f4f83e7",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Yon-Luc",
+        "repo": "Roxysu",
+        "type": "github"
       }
     },
     "wrapper-modules": {

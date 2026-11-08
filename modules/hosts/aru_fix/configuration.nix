@@ -1,8 +1,11 @@
-{self, ...}: {
+{self, inputs, ...}: {
   flake.nixosModules.Aru_fixConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.Aru_fixHardware
+      inputs.roxysu.nixosModules.default
     ];
+
+    programs.roxysu.enable = true;
 
     boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -78,7 +81,6 @@
     packages = with pkgs; [
       kdePackages.kate
       vesktop
-      steam
       vlc
       libreoffice
       opencode
@@ -89,7 +91,13 @@
       vscode-fhs
     ];
   };
+  programs.steam = {
+      enable = true;
 
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   # Install firefox.
   programs.firefox.enable = true;
   fonts = {
