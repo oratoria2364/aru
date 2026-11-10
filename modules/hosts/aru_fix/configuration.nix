@@ -2,6 +2,7 @@
   flake.nixosModules.Aru_fixConfiguration = {pkgs, ...}: {
     imports = [
       self.nixosModules.Aru_fixHardware
+      self.nixosModules.feature-vr
       inputs.roxysu.nixosModules.default
     ];
 
