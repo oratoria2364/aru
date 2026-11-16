@@ -10,6 +10,10 @@
       url = "github:Yon-Luc/Roxysu";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    bizhawk = {
+      url = "github:TASEmulators/BizHawk";
+      flake = false;
+    };
   };
 
   outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules);
