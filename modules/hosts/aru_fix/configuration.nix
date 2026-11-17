@@ -58,6 +58,10 @@
       ];
     };
 
+    # BizHawk (imported from inputs.bizhawk) still depends on gtk2,
+    # which is marked broken until NixOS 27.05.
+    nixpkgs.config.problems.handlers."gtk+".broken = "warn";
+
     services.xserver.videoDrivers = [ "nvidia" ];
     hardware.nvidia.open = true;
 
