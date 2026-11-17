@@ -4,22 +4,24 @@
 
     environment.systemPackages = with pkgs; [
       wayvr
-      wivrn
     ];
 
-    networking.firewall = {
-      allowedTCPPorts = [ 9757 ];
-      allowedUDPPorts = [ 9757 ];
-    };
-
-    services.avahi = {
+    # Ports and avahi publishing are opened/configured by the service itself
+    services.wivrn = {
       enable = true;
-      nssmdns4 = true;
       openFirewall = true;
-      settings.publish = {
-        "disable-publishing" = false;
-        "disable-user-service-publishing" = false;
-        "publish-addresses" = true;
+
+      # CAP_SYS_NICE, for asynchronous reprojection
+      highPriority = true;
+
+      # Steam OpenXR discovery
+      steam.importOXRRuntimes = true;
+      steam.package = pkgs.steam;
+
+      config.enable = true;
+      config.json = {
+        application = [ pkgs.wayvr ];
+        # hostname unset: WiVRn defaults to the system hostname
       };
     };
   };
